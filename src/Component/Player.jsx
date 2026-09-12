@@ -3,7 +3,7 @@ import { assets } from '../assets/assets'
 import { PlayerContext } from '../Context/PlayerContext'
 
 const Player = () => {
-  const { track, seekBar, seekBg, playStatus, play, pause,time } = useContext(PlayerContext);
+  const { track, seekBar, seekBg, playStatus, play, pause,time,previous,next } = useContext(PlayerContext);
   return (
     <div className='h-[10%] bg-black flex justify-between items-center text-white px-4'>
       <div className='hidden lg:flex items-center gap-4'>
@@ -16,7 +16,7 @@ const Player = () => {
       <div className='flex flex-col items-center gap-1 m-auto'>
         <div className='flex gap-4'>
           <img className='w-4 cursor-pointer' src={assets.shuffle_icon} alt="" />
-          <img className='w-4 cursor-pointer' src={assets.prev_icon} alt="" />
+          <img onClick={previous} className='w-4 cursor-pointer' src={assets.prev_icon} alt="" />
           {
             playStatus
               ?
@@ -25,7 +25,7 @@ const Player = () => {
               <img onClick={play} className='w-4 cursor-pointer' src={assets.play_icon} alt="" />
 
           }
-          <img className='w-4 cursor-pointer' src={assets.next_icon} alt="" />
+          <img onClick={next} className='w-4 cursor-pointer' src={assets.next_icon} alt="" />
           <img className='w-4 cursor-pointer' src={assets.loop_icon} alt="" />
         </div>
         <div className='flex items-center gap-5'>
